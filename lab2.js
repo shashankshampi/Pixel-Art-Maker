@@ -2,12 +2,11 @@
 // Select size input
 
 // When size is submitted by the user, call makeGrid()
-var h=document.getElementById('inputHeight').value;
-var w=document.getElementById('inputWidth').value;
-var cl=document.getElementById('colorPicker').value;
-
-
+  
 function makeGrid() {
+
+  var h=document.getElementById('inputHeight').value;
+  var w=document.getElementById('inputWidth').value;
  
     var table = document.getElementById("pixelCanvas");
     table.innerHTML = '';
@@ -19,19 +18,22 @@ function makeGrid() {
      cell1.innerHTML = " ";
    }
  }
-}
- 
- function colorgd(){
- cell = table.find('td');
-  cell.click(function() {
-    $(this).attr('bgcolor', cl);
-  });
-}
- 
- $("#sizePicker").on("submit", function(evt) {
-    makeGrid();
-    colorgd();
-    evt.preventDefault();
-});
 
- 
+}
+
+function Cellc() {
+        $("td").on("mousedown", function () {
+            var color = $('#colorPicker').val();
+            $(this).css("background-color", color);
+        })
+    };
+var submitQuery;
+
+submitQuery = $('input[type="submit"]')
+
+submitQuery.click(function(event) {
+  event.preventDefault();
+  makeGrid();
+  Cellc();
+  
+});
